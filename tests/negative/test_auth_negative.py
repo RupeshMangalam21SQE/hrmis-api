@@ -1,18 +1,14 @@
 # tests/negative/test_auth_negative.py
-import os
 import pytest
 from src.endpoints.assets import ASSET_REQUESTS
-
-def _p(path: str) -> str:
-    prefix = os.getenv("API_PREFIX", "HRMBackendTest").strip("/")
-    return f"/{prefix}/{path.lstrip('/')}"
+from tests.utils.api_path import api_path
 
 @pytest.mark.negative
 @pytest.mark.regression
 @pytest.mark.module_assets
 @pytest.mark.role("employee")
 def test_assets_request_list_scoped_to_employee(ctx, identity_employee):
-    r = ctx.get(_p(f"{ASSET_REQUESTS}?pageSize=10&page=1"))
+    r = ctx.get(api_path(f"{ASSET_REQUESTS}?pageSize=10&page=1"))
     assert r.ok, r.text()
     body = r.json()
     items = body["data"] if isinstance(body, dict) and "data" in body else body

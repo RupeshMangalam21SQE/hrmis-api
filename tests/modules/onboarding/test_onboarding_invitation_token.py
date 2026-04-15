@@ -80,7 +80,7 @@ def test_fetch_latest_pending_invitation_from_last_page(ctx):
     token, link, email = _extract_token_and_email(latest_item)
 
     if not token and not link:
-        pytest.xfail("Latest invitation found but no token/link field is exposed in payload")
+        pytest.xfail("[ONB-DEF-001] expected=token or link field present for latest invitation; actual=invitation item without token/link fields; note=payload does not expose invitation token/link")
 
     # Mask token unless requested
     show_full = os.getenv("LOG_INVITE_TOKEN", "false").lower() == "true"

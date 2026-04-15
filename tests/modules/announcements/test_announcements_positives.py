@@ -3,6 +3,7 @@ from src.clients.announcements_client import AnnouncementsClient
 
 # ANN-001: Create with valid details
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_create_announcement_valid(ctx, valid_announcement_data, sample_announcement_file):
     client = AnnouncementsClient(ctx)
     payload = {**valid_announcement_data, 'file': sample_announcement_file}
@@ -14,6 +15,7 @@ def test_create_announcement_valid(ctx, valid_announcement_data, sample_announce
 
 # ANN-006: Update with valid details
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_update_announcement_valid(ctx, valid_announcement_data, sample_announcement_file):
     client = AnnouncementsClient(ctx)
     
@@ -45,6 +47,7 @@ def test_update_announcement_valid(ctx, valid_announcement_data, sample_announce
 
 # ANN-009: Fetch pending list
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_fetch_pending_announcements(ctx):
     client = AnnouncementsClient(ctx)
     response = client.get_announcements(page=1, page_size=10, status="PENDING")

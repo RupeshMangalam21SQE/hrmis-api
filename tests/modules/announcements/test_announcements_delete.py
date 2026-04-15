@@ -3,6 +3,7 @@ from src.clients.announcements_client import AnnouncementsClient
 
 # ANN-014: Delete with valid ID
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_delete_announcement_valid(ctx, valid_announcement_data, sample_announcement_file):
     client = AnnouncementsClient(ctx)
     payload = {**valid_announcement_data, 'file': sample_announcement_file}
@@ -16,15 +17,17 @@ def test_delete_announcement_valid(ctx, valid_announcement_data, sample_announce
 
 # ANN-015: Delete with invalid ID
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_delete_announcement_invalid_id(ctx):
     client = AnnouncementsClient(ctx)
     res = client.delete_announcement("999999")
-    # Backend returns 500, but matrix expects 404
-    with pytest.xfail("Bug: API returns 500 instead of 404 for invalid ID"):
-        assert res.status == 404
+    if res.status == 500:
+        pytest.xfail("[ANN-DEF-001] expected=404; actual=500 :: internal server error; note=invalid delete id returns 500 instead of not found")
+    assert res.status == 404, f"Expected 404, got {res.status}"
 
 # ANN-017: Delete twice
 @pytest.mark.module_announcements
+@pytest.mark.regression
 def test_delete_announcement_twice(ctx, valid_announcement_data, sample_announcement_file):
     client = AnnouncementsClient(ctx)
     payload = {**valid_announcement_data, 'file': sample_announcement_file}

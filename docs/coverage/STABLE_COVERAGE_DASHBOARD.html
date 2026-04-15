@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stable API Coverage Dashboard</title>
+  <style>
+    :root { --bg:#f4f7f5; --card:#ffffff; --ink:#132a1f; --muted:#5f7468; --ok:#1f7a4f; --warn:#b06500; --line:#d6e1db; }
+    body { margin:0; font-family: 'Segoe UI', Tahoma, sans-serif; background:linear-gradient(135deg,#f4f7f5,#e9f1ec); color:var(--ink); }
+    .wrap { max-width:1100px; margin:30px auto; padding:0 18px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:0 8px 18px rgba(0,0,0,.04); }
+    h1 { margin:0 0 8px; font-size:28px; }
+    .meta { color:var(--muted); font-size:14px; }
+    .grid { display:grid; grid-template-columns: repeat(4,minmax(120px,1fr)); gap:10px; }
+    .kpi { background:#f8fbf9; border:1px solid var(--line); border-radius:10px; padding:10px; }
+    .kpi .v { font-size:22px; font-weight:700; }
+    .kpi .l { color:var(--muted); font-size:12px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th,td { border-bottom:1px solid var(--line); padding:9px 8px; text-align:left; }
+    th { background:#f6faf7; }
+    .yes { color:var(--ok); font-weight:600; }
+    .no { color:var(--warn); font-weight:600; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Stable API Coverage Dashboard</h1>
+    <div class="meta">Generated (UTC): 2026-04-10 11:06:24</div>
+  </div>
+  <div class="card">
+    <div class="grid">
+      <div class="kpi"><div class="v">2/5</div><div class="l">Go-signal modules</div></div>
+      <div class="kpi"><div class="v">21</div><div class="l">Manual cases (go-signal)</div></div>
+      <div class="kpi"><div class="v">21</div><div class="l">Automated cases</div></div>
+      <div class="kpi"><div class="v">100.0%</div><div class="l">Coverage</div></div>
+    </div>
+        <div class="meta" style="margin-top:10px">JUnit source: reports/20260410_142312/junit.xml | Passed (go-signal): 11 | Failed (go-signal): 16</div>
+  </div>
+  <div class="card">
+    <table>
+                        <thead><tr><th>Module</th><th>Go Signal</th><th>Manual</th><th>Automated</th><th>Spec Flow</th><th>Overlap</th><th>Net Covered</th><th>Pending</th><th>Passed</th><th>Failed</th><th>Coverage %</th><th>Test Files</th><th>Schema Files</th></tr></thead>
+      <tbody>
+                                <tr><td>login</td><td class='yes'>Yes</td><td>10</td><td>10</td><td>1</td><td>1</td><td>10</td><td>0</td><td>8</td><td>7</td><td>100.0</td><td>1</td><td>1</td></tr><tr><td>salary_management</td><td class='yes'>Yes</td><td>11</td><td>11</td><td>1</td><td>1</td><td>11</td><td>0</td><td>3</td><td>9</td><td>100.0</td><td>1</td><td>1</td></tr><tr><td>announcements</td><td class='no'>No</td><td>19</td><td>19</td><td>2</td><td>2</td><td>19</td><td>0</td><td>12</td><td>9</td><td>100.0</td><td>6</td><td>1</td></tr><tr><td>dashboard</td><td class='no'>No</td><td>14</td><td>1</td><td>1</td><td>1</td><td>1</td><td>13</td><td>1</td><td>0</td><td>7.14</td><td>0</td><td>1</td></tr><tr><td>onboarding</td><td class='no'>No</td><td>71</td><td>34</td><td>0</td><td>0</td><td>34</td><td>37</td><td>24</td><td>28</td><td>47.89</td><td>7</td><td>4</td></tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="card">
+        <table>
+            <thead><tr><th>Module</th><th>Automated Mapped</th><th>Auto Evidence Present</th><th>Auto Evidence Missing</th><th>Spec Mapped</th><th>Spec Evidence Present</th><th>Spec Evidence Missing</th></tr></thead>
+            <tbody>
+                <tr><td>login</td><td>10</td><td>0</td><td>10</td><td>1</td><td>0</td><td>1</td></tr><tr><td>salary_management</td><td>11</td><td>0</td><td>11</td><td>1</td><td>0</td><td>1</td></tr><tr><td>announcements</td><td>19</td><td>19</td><td>0</td><td>2</td><td>2</td><td>0</td></tr><tr><td>dashboard</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>onboarding</td><td>34</td><td>34</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

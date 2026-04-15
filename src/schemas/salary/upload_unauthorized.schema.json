@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Salary Upload Unauthorized Response",
+  "type": "object",
+  "required": ["statusCode", "message", "data"],
+  "properties": {
+    "statusCode": {
+      "type": "integer",
+      "const": 401
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": ["object", "array", "null"]
+    }
+  },
+  "additionalProperties": true
+}

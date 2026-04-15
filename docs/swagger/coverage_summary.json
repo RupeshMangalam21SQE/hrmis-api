@@ -1,0 +1,9 @@
+{
+  "captured_at_utc": "2026-04-10 10:16:37",
+  "swagger_path_templates_total": 349,
+  "tests_inferred_paths_total": 13,
+  "matched_swagger_paths_covered": 13,
+  "matched_swagger_paths_uncovered": 336,
+  "path_coverage_percent": 3.72,
+  "files_scanned": 28
+}

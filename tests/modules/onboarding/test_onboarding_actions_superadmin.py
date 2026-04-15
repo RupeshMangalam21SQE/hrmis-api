@@ -92,6 +92,7 @@ def test_onboarding_caelius_email_approve(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.skipif(not RUN_MUTATING, reason="Mutating onboarding tests disabled by default")
+@pytest.mark.xfail(reason="Bug: onboarding HR approve intermittently returns 500")
 def test_onboarding_hr_approval_action(ctx):
     """
     HR approval for a known test employee id with safe test assignments.

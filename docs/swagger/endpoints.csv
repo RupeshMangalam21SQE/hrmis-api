@@ -1,0 +1,376 @@
+method,path,operationId,tags,summary
+POST,/adhoc/email/create,acceptEmailCreationRequest,Adhoc Email creations requests,Accept the new Adhoc email creation reqeusts
+GET,/adhoc/email/list,getEmailCreationRequests,Adhoc Email creations requests,Get list of the email requests by the status
+PUT,/adhoc/email/update,updateEmailRequests,Adhoc Email creations requests,Update email request
+GET,/announcement,announcementList,Announcement  Management,get list of announcements
+PUT,/announcement,createAnnouncement,Announcement  Management,create announcement
+DELETE,/announcement/attachment/{id},deleteAnnouncementAttachment,Announcement  Management,
+PUT,/announcement/dashboard/event/upload,uploadEvents,Announcement  Management,create announcement
+GET,/announcement/dashboard/events,getBirthdayAnniversaries,Announcement  Management,get list of announcements
+GET,/announcement/dashboard/list,announcementForDashboard,Announcement  Management,get list of announcements
+PUT,/announcement/update,updateAnnouncement,Announcement  Management,create announcement
+DELETE,/announcement/{id},deleteAnnouncement,Announcement  Management,
+GET,/api/access/accessesEmployeesData,findAccessEmployeesData,master-access-controller,
+GET,/api/access/accessesEmployeesDataV2,findAccessEmployeesDataV2,master-access-controller,
+POST,/api/access/add/accessRequest,addAccessRequest_1,master-access-controller,
+POST,/api/access/addRequest/{employeeId},addAccessRequest,master-access-controller,
+POST,/api/access/approve/dl/{requestId},approveByDL,master-access-controller,
+POST,/api/access/approve/it/{requestId},approveByIT_1,master-access-controller,
+PUT,/api/access/approve/{accessTypeId},approveAccessType,master-access-controller,
+PUT,/api/access/deallocate/{requestId},approveByIT,master-access-controller,
+PUT,/api/access/edit/{accessTypeId},editAccessType,master-access-controller,
+GET,/api/access/getPendingRequests/types,getPendingAccessTypes,master-access-controller,
+GET,/api/access/report/export,exportAllProjects_1,master-access-controller,
+GET,/api/access/requests/dl/{approverId},getRequestsForDL,master-access-controller,
+GET,/api/access/requests/employee/{employeeId},getRequestsForEmployee,master-access-controller,
+GET,/api/access/requests/it/{approverId},getRequestsForIT,master-access-controller,
+GET,/api/access/types,getAccessTypes_2,master-access-controller,
+POST,/api/auth/logout,logout,Auth Controller,
+GET,/api/auth/path,getPath,Auth Controller,
+POST,/api/auth/signin,authenticateUser,Auth Controller,
+POST,/api/auth/signup,registerUser,Auth Controller,
+POST,/api/auth/validate,validateUUID,Auth Controller,
+GET,/api/auth/validate-token,validateToken,Auth Controller,
+POST,/api/consultant/allocation,createAllocation,consultant-controller,
+GET,/api/consultant/allocation/balance,getBalance,consultant-controller,
+POST,/api/consultant/allocation/consume,consume,consultant-controller,
+POST,/api/consultant/timesheet/submit,submitTimesheet,consultant-controller,
+GET,/api/dashboard/attendance-analytics,getAttendanceAnalytics,dashboard-controller,
+GET,/api/dashboard/celebrations,getTodayCelebrations,dashboard-controller,
+GET,/api/dashboard/leave-balance,getLeaveBalance,dashboard-controller,
+GET,/api/dashboard/pending-requests,getPendingRequests,dashboard-controller,
+GET,/api/dashboard/today-punch,getTodayPunch,dashboard-controller,
+GET,/api/dashboard/weekly-timesheet,getWeeklyTimesheetSummary,dashboard-controller,
+GET,/api/events,getEvents,event-controller,
+POST,/api/events/apply,apply,event-controller,
+GET,/api/events/available,getAvailableEvents,event-controller,
+POST,/api/events/create,createEvent,event-controller,
+GET,/api/events/expense/list,getExpenses,event-controller,
+GET,/api/events/expenses/user,getUserExpenses,event-controller,
+GET,/api/events/finance,getFinanceRequests,event-controller,
+PUT,/api/events/finance/action,financeActionOnExpense,event-controller,
+PUT,/api/events/management/action,updateManagerStatus,event-controller,
+POST,/api/events/management/expense,uploadManagementExpense,event-controller,
+GET,/api/events/mgmt,getMgmtRequests,event-controller,
+GET,/api/events/my-requests,getMyTravelRequests,event-controller,
+POST,/api/events/user/create/draft,createUserEvent,event-controller,
+POST,/api/events/user/expense,uploadUserExpense,event-controller,
+PUT,/api/events/{eventId}/action,performAction,event-controller,
+GET,/api/events/{eventId}/user,getExpensesByEventAndUser,event-controller,
+DELETE,/api/events/{expenseId},deleteExpense,event-controller,
+PUT,/api/events/{expenseId},updateExpense,event-controller,
+PUT,/api/events/{requestId}/submit,submitEvent,event-controller,
+PUT,/api/events/{requestId}/user/submit,updateEvent,event-controller,
+GET,/api/timesheets,getTimesheet,timesheet-controller,
+POST,/api/timesheets,createTimesheet,timesheet-controller,
+GET,/api/timesheets/expired,getExpiredTimesheetReminders,timesheet-controller,
+GET,/api/timesheets/expiry-warning,getExpiryWarnings,timesheet-controller,
+GET,/api/timesheets/export,exportTimesheet,timesheet-controller,
+GET,/api/timesheets/export/remote-timesheet,exportRemoteTimesheet,timesheet-controller,
+POST,/api/timesheets/extend-deadline,extendDeadline,timesheet-controller,
+GET,/api/timesheets/get-all/timesheets,filterTimesheets,timesheet-controller,
+GET,/api/timesheets/hr/timesheets/pending,getPendingTimesheets_1,timesheet-controller,
+POST,/api/timesheets/manager/action,managerAction,timesheet-controller,
+GET,/api/timesheets/manager/view/timesheets,getSubmittedTimesheets,timesheet-controller,
+GET,/api/timesheets/pending/reminder,getPendingTimesheets,timesheet-controller,
+POST,/api/timesheets/track-remote,trackRemoteEmployees,timesheet-controller,
+GET,/api/timesheets/work-categories,getAllTitleNames,timesheet-controller,
+GET,/api/v1/mdm/activity/all,getAllData,mdm-activity-controller,
+GET,/api/v1/mdm/activity/asset-type/list,getAllAssertTypes_2,mdm-activity-controller,
+GET,/api/v1/mdm/activity/employee/system-assets,getEmployeeSystemAssets,mdm-activity-controller,
+GET,/api/v1/mdm/activity/employee/system-logs,getEmployeeSystemLogs,mdm-activity-controller,
+GET,/api/v1/mdm/activity/is-system-assigned,getSystemAssigned,mdm-activity-controller,
+GET,/api/v1/mdm/activity/list/systems,getEmployeesWithSystemAssets,mdm-activity-controller,
+GET,/api/v1/mdm/activity/login-excel/export,downloadExcel,mdm-activity-controller,
+GET,/api/v1/mdm/activity/report,report,mdm-activity-controller,
+GET,/api/v1/mdm/activity/system-activity-excel/mail,generateCombinedExcelReportMail_1,mdm-activity-controller,
+GET,/api/v1/mdm/activity/system-logs/excel/export,exportProjectsByEmployee_1,mdm-activity-controller,
+POST,/api/v1/mdm/activity/upload,upload,mdm-activity-controller,
+GET,/api/v2/leaves/allowed-types,getAllowedTypes,leave-controller-v-2,
+POST,/api/v2/leaves/apply,applyLeave,leave-controller-v-2,
+GET,/api/v2/leaves/employee/{employeeId}/requested,requestedLeaves,leave-controller-v-2,
+GET,/api/v2/leaves/hr/{hrId}/pending,pendingHr,leave-controller-v-2,
+POST,/api/v2/leaves/hr/{requestId}/approve,approvehr,leave-controller-v-2,
+GET,/api/v2/leaves/ledger/history/{requestId},historyPerRequest,leave-controller-v-2,
+GET,/api/v2/leaves/manager/{managerId}/pending-all,pendingAll,leave-controller-v-2,
+POST,/api/v2/leaves/withdraw,withdraw,leave-controller-v-2,
+POST,/api/v2/leaves/{requestId}/approve,approve,leave-controller-v-2,
+POST,/api/v2/leaves/{requestId}/reject,reject,leave-controller-v-2,
+GET,/appraisal,getDocumentList_1,Appraisal Controller,
+POST,/appraisal/bulk/upload,uploadExcel,Appraisal Controller,
+GET,/appraisal/downloadFile,downloadFile_2,Appraisal Controller,
+GET,/appraisal/export,exportExcel,Appraisal Controller,
+POST,/appraisal/upload,excelFile_1,Appraisal Controller,Appraisal file
+POST,/appraisal/upload/manual,salarySlip,Appraisal Controller,Manual Upload
+GET,/appraisal/{employeeId},getAppraisals,Appraisal Controller,
+GET,/assest,getAssinedAssestList,Asset Controller,Get List of  Assest  Assined to Employee 
+POST,/assest/allocate,allocate,Asset Controller,Assined new  Assest
+POST,/assest/approve/category,approveAsset,Asset Controller,
+PUT,/assest/approveRequest,approveRequestAssestService_1,Asset Controller,
+GET,/assest/approverAssestRequestList,getApproverAssestRequestList,Asset Controller,
+GET,/assest/assestRequestList,getAssestRequestList_1,Asset Controller,Get list of own request raised by employee
+GET,/assest/availableAssest,getAssestListByAssestTypeId,Asset Controller,
+POST,/assest/bulk/new,newBulkAssest,Asset Controller,
+GET,/assest/category,getAssetRequest,Asset Controller,
+POST,/assest/create/category,createAsset,Asset Controller,
+POST,/assest/deallocate,deallocate,Asset Controller,Deallocate   Assest
+GET,/assest/employees/name,getEmployeeIdAndName_1,Asset Controller,
+GET,/assest/export,getAvailableAssestExcel,Asset Controller,
+GET,/assest/filter/total,getfilterAssest,Asset Controller,
+GET,/assest/list,getAllAssertTypes_1,Asset Controller,Retrieve a list of all available asset types.
+GET,/assest/my,getMyAssinedAssestList,Asset Controller,Get My Approved Assets List 
+POST,/assest/new,newAssest,Asset Controller,Create a new asset with the provided details.
+GET,/assest/owner/types,getAccessTypes_1,Asset Controller,
+POST,/assest/requestAssest,requestAssest,Asset Controller,Assest   Request
+GET,/assest/total,getAvailableAssest,Asset Controller,
+GET,/assest/total/123,getAllAsset,Asset Controller,
+GET,/assest/v1/list-all,getAllMasterAssets,Asset Controller,get list of all assets in system
+GET,/assest/v1/master/assets,getMasterAssetList,Asset Controller,get list of all assets in system
+PUT,/assest/v2/approveRequest,approveRequestAssestServiceV2,Asset Controller,[V2] Approve the asset requests which has been generated by employee
+GET,/assest/v2/approverAssestRequestList,getApproverAssestRequestListV2,Asset Controller,Get List of Asset request which has been requested by Employee
+GET,/asset/return/list,getReturnedAssetList,Asset Return Controller,Get list of retuned asset
+POST,/asset/return/upload,uploadAssetReturnRequest,Asset Return Controller,Upload the asset returns
+POST,/attendance/regularization/v1/apply,acceptRegularizationRequest,Attendance Regularization requests,Apply Attendance Regularization  reqeusts
+GET,/attendance/regularization/v1/get,getRegularizationRequest,Attendance Regularization requests,Get Attendance Regularization request for self
+GET,/attendance/regularization/v1/hr,getRegularizationRequestForHR,Attendance Regularization requests,Get Attendance Regularization request for HR
+PUT,/attendance/regularization/v1/hr/approve,aproveRegularizationssRequestHR,Attendance Regularization requests,Approve/Reject Attendance Regularization request at HR
+GET,/attendance/regularization/v1/manager,getRegularizationRequestForL1,Attendance Regularization requests,Get Attendance Regularization request for Manager
+PUT,/attendance/regularization/v1/manager/approve,aproveRegularizationssRequest,Attendance Regularization requests,Approve/Reject Attendance Regularization request at L1
+GET,/attendance/regularization/v1/test-process,testProcess,Attendance Regularization requests,
+PUT,/attendance/regularization/v1/withdraw,withdrawRegularizationssRequest,Attendance Regularization requests,Withdraw Attendance Regularization request
+GET,/backup,getAllAssertTypes,backup-controller,
+PUT,/biometric/mapping/create,createDepartment_1,Biometric Controller,To Create biometic maping in System
+POST,/biometric/mapping/update,updateDepartment_1,Biometric Controller,To Update Existing Biometric in System
+DELETE,/biometric/{id},deleteBiometirc,Biometric Controller,To Delete Biometric in System
+GET,/biometric/{id},getBiometirc,Biometric Controller,To GET Biometric in System
+POST,/csat,createCSAT,project-member-csat-controller,
+GET,/csat/employee/{employeeId},getByEmployeeId,project-member-csat-controller,
+GET,/csat/employee/{employeeId}/count-five-star,countFiveStar,project-member-csat-controller,
+GET,/csat/project/{projectId},getByProjectId,project-member-csat-controller,
+GET,/csat/projects/with-ratings,getProjectsWithRatings,project-member-csat-controller,
+PUT,/csat/{id},updateCSAT,project-member-csat-controller,
+PUT,/department/create,createDepartment,Department Controller,To Create New Department in System
+POST,/department/update,updateDepartment,Department Controller,To Update Existing Department in System
+POST,/dependent,addDependent,Employee Dependent Management,Post Dependent
+DELETE,/dependent/{dependentId},deleteDependent_2,Employee Dependent Management,Delete dependent by Dependent ID
+PUT,/dependent/{dependentId},updateDependent,Employee Dependent Management,Update Dependent
+PUT,/designation/create,createDesignation,Designation Controller,To Create New designation in System
+POST,/designation/update,updateDesignation,Designation Controller,To Update Existing Designation in System
+GET,/document,getDocumentList,Employee Document Management,
+POST,/document,uploadDocument,Employee Document Management,upload  Document
+GET,/document/basic/file,getBasicFile,Employee Document Management,
+GET,/document/file/{userId}/{documentDir}/{docId}/{filename},getFile,Employee Document Management,
+GET,/document/get/profile/{id},getprofileImage,Employee Document Management,
+PUT,/document/v1/approve,approveOrRejectEmployeeDocument,Employee Document Management,Approve Or Reject the employee's document
+GET,/document/v1/list/for-approver,getDocumentListForApprover,Employee Document Management,Retrieve a list of all documents to be Approve by Approver
+GET,/document/v1/list/status,getDocumentStatusList,Employee Document Management,Retrieve a list of all documents uploaded by user
+POST,/document/v2/upload,uploadDocumentV2,Employee Document Management,Upload Employee Document v2
+POST,/education,addEducation,Employee Education Management,Post Education
+DELETE,/education/{educationId},deleteEducation,Employee Education Management,Delete Education by Education ID
+PUT,/education/{educationId},updateEducation,Employee Education Management,Update Education
+GET,/emailDeletion,getAllRequests_1,Project Management,Get All Requests
+POST,/emailDeletion,addProject_1,Project Management,create Delete Request
+PUT,/emailDeletion/approve/{empId},approveRequest,Project Management,Approve or update Email Delete Request status
+GET,/emailDeletion/reqStatus/{reqStatus},getRequestsByStatus,Project Management,Get all Email Delete Requests by status (0 or 1)
+GET,/emailDeletion/user,getAllUsers,Project Management,Get Employee Details
+GET,/emailDeletion/user/{employeeId},getEmployeeDetailsbyId,Project Management,Get Employee Details
+POST,/experience,addExperience,Employee Experience Management,Get all Experiences
+DELETE,/experience/{experienceId},deleteExperience,Employee Experience Management,Delete Experience by Experience ID
+PUT,/experience/{experienceId},updateExperience,Employee Experience Management,Update Experiences
+GET,/form16,getForm16List,Upload and Manage the Form 16 of the Employee,Get List of  Form 16 
+GET,/form16/downloadFile,downloadFile_1,Upload and Manage the Form 16 of the Employee,Download  Form 16 
+POST,/form16/upload/manual,uploadForm16Manually,Upload and Manage the Form 16 of the Employee,Manual Upload Form16
+GET,/holiday,getAllHolidays,Holiday Controller,Get all holidays
+PUT,/holiday/add,addHoliday,Holiday Controller,Add Holiday
+DELETE,/holiday/delete,removeHoliday,Holiday Controller,Remove/Delete Holiday
+PUT,/holiday/update,updateHoliday,Holiday Controller,Update Holiday
+POST,/internal/cron/test/wfh-quarter,testQuarterCron,internal-controller,
+POST,/internal/cron/test/wfh-week,testWFHWeekCron,internal-controller,
+GET,/internal/escalation/asset,getF1Escalation,internal-controller,
+GET,/internal/escalation/second/asset,getF2Escalation,internal-controller,
+GET,/internal/fill-leave/bal,fillBal,internal-controller,
+GET,/internal/fill-leave/half-yearly,fillHalfYearly,internal-controller,
+GET,/internal/fill-leave/pl,fillPL,internal-controller,
+GET,/internal/fill-leave/wfh,fillWFH_1,internal-controller,
+GET,/internal/generate,generateQRCode,internal-controller,Generate QR Code from URL and return as PNG
+POST,/internal/leave/upload,handleFileUpload_1,internal-controller,
+POST,/internal/leaves/import,importLeaveBalances,internal-controller,
+GET,/internal/sendmail,sendGenricmail,internal-controller,
+GET,/internal/test/punch,testPunch,internal-controller,
+GET,/leave-credit/v1/request,getLeaveCreditRequest,Leave Credit Request  Management,Get Leave credit request in system by status
+PUT,/leave-credit/v1/request/add,addLeaveCreditRequest,Leave Credit Request  Management,Add Leave credit request in system
+PUT,/leave-credit/v1/request/approve,approveLeaveCreditRequest,Leave Credit Request  Management,Aprove leave credit request
+PUT,/leave-credit/v1/request/reject,rejectLeaveCreditRequest,Leave Credit Request  Management,Reject leave credit request
+PUT,/leave-credit/v1/request/withdrawal,withdrawLeaveCreditRequest,Leave Credit Request  Management,Withdraw leave credit request
+GET,/leave/all/concernRequest,getConcerns,Leave Controller,Get all concern requests
+GET,/leave/attandance,getEmpAttandanceByDate,Leave Controller,Get Attandance report for the employee
+POST,/leave/concern/action,takeAction,Leave Controller,Approve or Reject concern request (HR)
+POST,/leave/concern/action/bulk,takeAction_1,Leave Controller,Approve or Reject concern request (HR)
+GET,/leave/concerns/me,getMyConcerns,Leave Controller,
+GET,/leave/concerns/report,downloadConcernReport,Leave Controller,
+GET,/leave/emp/attandance,getEmpAttandance,Leave Controller,Get Attandance report for the employee
+GET,/leave/emp/attandance/compile,compileAttendance,Leave Controller,Compile for the employee
+GET,/leave/emp/today,getEmployeeListLeaveToday,Leave Controller,Get List of employees who are on leave today
+GET,/leave/export/attandance,exportAttandance,Leave Controller,Export Attandance report for the employee
+GET,/leave/export/excel,exportLeaveRequest,Leave Controller,
+GET,/leave/getPendingRequest,getLeaveCounts,Leave Controller,
+POST,/leave/history,history,Leave Controller,
+GET,/leave/leave/approver,getLeaveTransaction,Leave Controller,
+PUT,/leave/leave/approver,updateApproverLeaveTransaction,Leave Controller,
+GET,/leave/leave/approver/hr,getLeaveTransactionHR,Leave Controller,Get list of leaves applied by Employee for final approval by HR
+PUT,/leave/leave/approver/hr,updateApproverLeaveTransactionHR,Leave Controller,Approve/Reject the final leave status by  HR
+GET,/leave/leave/approver/manager,getLeaveTransactionManager,Leave Controller,Get list of leaves applied by Employee under this manager
+PUT,/leave/leave/approver/manager,updateApproverLeaveTransactionManager,Leave Controller,Approve/Reject the leave status by  manager
+GET,/leave/leave/attandance/leave,processAttendance,Leave Controller,Compile for the employee
+PUT,/leave/leave/bulk/approver/hr,bulkApproverLeaveTransactionHR,Leave Controller,Bulk Approve/Reject the final leave status by  HR
+PUT,/leave/leave/withdraw,withdrawLeaveRequest,Leave Controller,
+PUT,/leave/masterleave,updateMasterLeaveByEmployeeId,Leave Controller,Update Master Leave by Employee ID
+GET,/leave/masterleave/{employeeId},getMasterLeavesByEmployeeId,Leave Controller,Get Master Leaves by Employee ID
+GET,/leave/ood/approver/dl,getOodLeaveTransactionDl,Leave Controller,
+PUT,/leave/ood/approver/dl,updateOodLeaveTransactionDl,Leave Controller,
+GET,/leave/ood/approver/hr,getOodLeaveTransactionHr,Leave Controller,
+PUT,/leave/ood/approver/hr,updateOodLeaveTransactionHr,Leave Controller,
+GET,/leave/ood/dl/list,getOodDlList,Leave Controller,
+POST,/leave/ood/leaveApply,oodLeaveRequest,Leave Controller,
+GET,/leave/ood/user/list,getUserOodList,Leave Controller,
+POST,/leave/raise/concern,raiseConcern,Leave Controller,Send Raise concern
+GET,/leave/raise/concern/employees,getEmployeesWithConcerns,Leave Controller,Get employees who have raised concerns
+GET,/leave/sendManagerAlert,sendManagerAlert,Leave Controller,TEST
+POST,/leave/test/fillwfh,fillWFH,Leave Controller,
+GET,/leave/types,getAllLeaveTypes,Leave Controller,Get all leave types
+PUT,/leave/us/leave/approve,approveLeaveRequest,Leave Controller,
+PUT,/leave/us/leave/withdraw,withdrawUSLeaveRequest,Leave Controller,
+POST,/leave/us/leaveApply,usLeaveRequest,Leave Controller,
+GET,/leave/v2/types,getAllLeaveTypesV2,Leave Controller,Get all leave types
+GET,/menu,getMenuList,Menu Controller,Get all menu userwise types
+GET,/menu/v1/all,findAllMenu,Menu Controller,Get all menu list
+GET,/menu/v1/find/{roleId},findMenuAssignedToARole,Menu Controller,Find Menu assigned to a role
+POST,/menu/v1/manage/assignment,assignMenuToRole,Menu Controller,Manage Assign Or Remove Menu to role
+GET,/menu/v1/users,getUsersMenuList,Menu Controller,Get menu list of own logged in user role (self role)
+POST,/newPassword,newPassword,Employee Password Change,Post Change Password
+GET,/offboarding,getAllRequests,offboarding-controller,
+POST,/offboarding/addRequest,createRequest,offboarding-controller,
+DELETE,/offboarding/{id},deleteRequest,offboarding-controller,
+GET,/offboarding/{id},getRequest,offboarding-controller,
+PUT,/offboarding/{id},approveByHr,offboarding-controller,
+GET,/onboarding,findOnboradEmployeeListby,Onboarding Controller,Get a onborad employee list by status
+POST,/onboarding,employeeOnboardingForm_1,Onboarding Controller,Send  employee  onboarding form 
+GET,/onboarding/departmentlist,getAllDepartment,Onboarding Controller,Get Department
+GET,/onboarding/designationlist,getAllDesignation,Onboarding Controller,Get All designation by department id
+GET,/onboarding/employees/name,getEmployeeIdAndName,Onboarding Controller,
+GET,/onboarding/invitations,findInvitationList,Onboarding Controller,Get a paged list of  onboarding invitations
+GET,/onboarding/paged,findPagedOnboradEmployeeListby,Onboarding Controller,Get a paged list of  onborad employee by status
+POST,/onboarding/update,updateTempUser,Onboarding Controller,Update temp/onboarded user profile information
+PUT,/onboarding/updateEmail,approveEmployee_1,Onboarding Controller,update  an employee with ccEmployeeID.
+PUT,/onboarding/v2/updateEmail,approveEmployeeByITL1,Onboarding Controller,L1 Approval Of Employee with ccEmployeeID by IT Admin
+PUT,/onboarding/v2/{employeeId}/approve,approveEmployeeV2,Onboarding Controller,Approve an employee and generate the ccEmployeeID.
+PUT,/onboarding/{employeeId}/approve,approveEmployee,Onboarding Controller,Approve an employee and generate the ccEmployeeID.
+POST,/password,forgetPassword,Forget Password,Send OTP
+POST,/password/changePassword,changePassword,Forget Password,Verify OTP
+POST,/password/verifyOTP,veriftyOtp,Forget Password,Verify OTP
+GET,/performance,getperformanceEmployeeById,Performance Controller,
+GET,/performance/data,getPerformaneDataV2,Performance Controller,
+GET,/performance/data/export,generateSurveyDataExcel,Performance Controller,
+GET,/performance/data/export/evaluator,generateEvaluatorDataExcel,Performance Controller,
+GET,/performance/employee/data,getemployeeData,Performance Controller,
+POST,/performance/evaluator,saveEvaluatorData,Performance Controller,
+GET,/performance/evaluator/data,getEvaluatorData,Performance Controller,
+GET,/performance/export,getPerformanceExcel,Performance Controller,
+POST,/performance/hr,hrPerformance,Performance Controller,
+GET,/performance/points,getPointEmployeeById,Performance Controller,
+POST,/performance/submit,submitSurvey,Performance Controller,
+GET,/performance/view,getView,Performance Controller,
+GET,/policy,getPolicyList,Employee Document Management,
+POST,/policy,addPolicy,Employee Document Management,upload  policy
+PUT,/policy,updatePolicy,Employee Document Management,upload  policy
+GET,/project,getProject,Project Management,Get all Projects
+POST,/project,addProject,Project Management,Post Project
+GET,/project/api/employees/1to3Projects/export,exportEmployees1to3Projects,Project Management,
+GET,/project/api/employees/4to6Projects/export,exportEmployees4to6Projects,Project Management,
+GET,/project/api/employees/MoreThan6Projects/export,exportEmployeesMoreThan6Projects,Project Management,
+GET,/project/api/employees/Shadowresource/export,generateEmployeesForShadowResource,Project Management,
+GET,/project/api/projects/dl/{id}/export,exportProjectsByDl,Project Management,
+GET,/project/api/projects/employee/{id}/export,exportProjectsByEmployee,Project Management,
+GET,/project/api/projects/export,exportAllProjects,Project Management,
+GET,/project/api/projects/{id}/employees/export,exportEmployeesByProject,Project Management,
+POST,/project/assign,assignProject,Project Management,
+POST,/project/bulkAssign,bulkAssign,Project Management,
+GET,/project/by-project/{projectId},getMembersByProject,Project Management,
+GET,/project/combined-excel,generateCombinedExcelReport,Project Management,
+GET,/project/combined-excel/mail,generateCombinedExcelReportMail,Project Management,
+POST,/project/complete/notification/{id},completeMailNotification,Project Management,send Notification
+GET,/project/countEmployeesGroupByProject/{value},getMembersforProjets,Project Management,Get all Emplpoyees
+POST,/project/create/notification/{id},createMailNotification,Project Management,send Notification
+POST,/project/createBulkProjects,createBulkProjects,Project Management,
+DELETE,/project/delete-project-member/{empId}/{projectId},deleteMember,Project Management,
+PATCH,/project/edit-project/{id},editProject,Project Management,
+PUT,/project/edit/{id},editMember,Project Management,
+GET,/project/employees/consultant/export,generateEmployeesForConsultant,Project Management,
+GET,/project/employeesHaveNoProjects/export,generateEmployeesHaveNoProjects,Project Management,
+GET,/project/file,generateExcelFile,Project Management,
+GET,/project/getActiveProjects,getActiveProjects,Project Management,Get all Active Projects of Employee
+GET,/project/getAllProjectDetails,getAllProjectDetails,Project Management,Get all Projects
+GET,/project/getAllShadowMembers,getAllProjectMembers,Project Management,Get all Shadow Emplpoyees
+GET,/project/getMainMembers/{projectId},getMainMembersforProject,Project Management,Get all Main Members
+POST,/project/hold/notification/{id}/{activeToHoldDate},holdMailNotification,Project Management,send Notification
+GET,/project/lba/list,getLbaList,Project Management,
+GET,/project/pm/list,getPMList,Project Management,
+GET,/project/project-summary/{employeeId},getDesignationSummary,Project Management,
+GET,/project/projects,getAllProjectNamesAndIds,Project Management,Get all project names and IDs
+GET,/project/projects-by-dl/{dlId},getProjectsBydl,Project Management,
+GET,/project/projects-by-employee/{employeeId},getProjectsByEmployee,Project Management,
+GET,/project/ps/list,getPSList,Project Management,
+POST,/project/shadow,create,Project Management,Create shadow resource
+GET,/project/shadow/project/{projectId},getProjectWithShadows,Project Management,Get full project details with shadow members
+DELETE,/project/shadow/{id},delete,Project Management,Delete shadow resource by ID
+GET,/project/shadow/{id},getById,Project Management,Get shadow resource by ID
+PUT,/project/shadow/{id},update,Project Management,Update shadow resource by ID
+GET,/project/shadowMemberByProjectId/{projectId},getShadowMemberByProjectId,Project Management,Get shadow member by by ProjectID
+DELETE,/project/{projectId},deleteDependent_1,Project Management,Delete project by Project ID
+DELETE,/punch,deletePunchByDate,Punch Details,
+GET,/punch,forgetPassword_1,Punch Details,Get details
+GET,/punch/punch-details,attendenceDetail,Punch Details,Get attendenece details
+POST,/reimbursement,addReimbursement,Employee ReimbursementEntity Management,Post ReimbursementEntity
+PUT,/reimbursement/approvereimbursement,approveRequestAssestService,Employee ReimbursementEntity Management,Approve/Reject reimbursement request by employee
+GET,/reimbursement/export,getInvoicesExcel,Employee ReimbursementEntity Management,
+GET,/reimbursement/getApproveReimbursementList,getAssestRequestList,Employee ReimbursementEntity Management,Get reimbursement request for approval purpose
+GET,/reimbursement/list,ListReimbursementRequests,Employee ReimbursementEntity Management,Search  reimbursement request for employee
+GET,/reimbursement/reimbursementList,getReimbursementRequestList,Employee ReimbursementEntity Management,Get reimbursement request for self
+POST,/reimbursement/reimbursements/upload,handleFileUpload,Employee ReimbursementEntity Management,Upload reimbursement sheet by finance team after processed
+GET,/reimbursement/types,getAccessTypes,Employee ReimbursementEntity Management,
+PUT,/reimbursement/withdrawReimbursement,withdrawReimbursement,Employee ReimbursementEntity Management,Withdraw reimbursement request by employee
+DELETE,/reimbursement/{reimbursementId},deleteDependent,Employee ReimbursementEntity Management,Delete reimbursement by ReimbursementEntity ID
+GET,/roles,getAllRoles,role-controller,
+POST,/roles,createRole,role-controller,
+POST,/roles/mapping,createRoleMapping,Roles Mapping,Create Or Update the users and role mapping
+GET,/roles/mapping/v1/user/{id},getRoleById_1,Roles Mapping,Find all roles list mapped to a user
+DELETE,/roles/{id},deleteRole,role-controller,
+GET,/roles/{id},getRoleById,role-controller,
+PUT,/roles/{id},updateRole,role-controller,
+GET,/salary,getSalaryList,Salary Controller,Get List of  Salary 
+GET,/salary/downloadFile,downloadFile,Salary Controller,
+POST,/salary/salaryupload,excelFile,Salary Controller,Salary Slip
+GET,/user,getAllEmployees,Employee Management,Get a list of all employees.
+POST,/user/admin/photo/upload,uploadPhotoByEmployee,Employee Management,Update employeePic 
+GET,/user/api/techstack-types,getAllTechStackTypes,Employee Management,
+GET,/user/designations,getAllDesignations,Employee Management,Get a list of all designations
+GET,/user/emp-directory/filter,getAllEmployeesDetails,Employee Management,Get a list of all employees.
+GET,/user/employees/{employeeId}/promotions,getEmployeePromotions,Employee Management,Get employee promotions
+PUT,/user/employees/{employeeId}/promotions/{newDesignationId},promoteEmployee,Employee Management,Promote an employee
+GET,/user/get/allUserDetails,getAllEmployeesV2,Employee Management,Get all details list of all employees.
+GET,/user/managers/{managerId},getEmployeesByManagerId,Employee Management,Get employees under a specific manager.
+GET,/user/orgchart,getHierarchy,Employee Management,
+POST,/user/photo,employeeOnboardingForm,Employee Management,Update employeePic 
+GET,/user/profile,getLoginEmployeeById,Employee Management,Get employee profile
+POST,/user/profile/update,updateEmployeeProfile,Employee Management,Update employee profile
+PUT,/user/v1/access/update,updateEmployeeAccess,Employee Management,Update the Employee access
+PUT,/user/v1/employment-type/update,updateEmployment,Employee Management,Update the Employment type from Consultent to Regular Employee
+GET,/user/v1/leave-manager,getLeaveManager,Employee Management,Get Leave Manager assigned Employee
+PUT,/user/v1/leave-manager/assign,assignLeaveManager,Employee Management,Assign Leave Manager to Employee
+DELETE,/user/v1/leave-manager/remove,removeLeaveManager,Employee Management,Remove/Delete Leave Manager to Employee
+PUT,/user/v2/{employeeId}/manager,updateManagerV2,Employee Management,"Update the manager of an employee, and Return the manager hierarchy"
+GET,/user/v2/{id},getEmployeeByIdV2,Employee Management,Get an employee by ID.
+GET,/user/with-roles,getAllEmployeesWithAssignedRoles,Employee Management,Get a list of all employees with roles attached
+PUT,/user/{employeeId}/manager,updateManager,Employee Management,Update the manager of an employee.
+GET,/user/{employeeId}/manager-hierarchy,getManagerHierarchy,Employee Management,Get the manager hierarchy for an employee by ID.
+GET,/user/{id},getEmployeeById,Employee Management,Get an employee by ID.

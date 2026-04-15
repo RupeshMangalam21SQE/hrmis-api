@@ -75,7 +75,7 @@ def test_create_employee_forbidden(ctx):
 def test_create_unauthorized(playwright):
     base_url = os.getenv("HRMIS_API_HOST", "https://topuptalent.com")
     prefix = os.getenv("API_PREFIX", "HRMBackendTest").strip("/")
-    unauth = playwright.request.new_context(base_url=base_url)
+    unauth = playwright.request.new_context(base_url=base_url, ignore_https_errors=True)
     try:
         email = f"role.noauth.{int(time.time())}@{DOMAIN}"
         multipart = {

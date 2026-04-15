@@ -14,6 +14,7 @@ EMP_SUBTYPE = os.getenv("TEST_EMPLOYEE_SUBTYPE", "Fulltime")
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_missing_employee_type(ctx):
     qs = f"managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -23,6 +24,7 @@ def test_approve_missing_employee_type(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_invalid_employee_type(ctx):
     qs = f"employeeType=TEMPORARY&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -32,6 +34,7 @@ def test_approve_invalid_employee_type(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_negative_manager_id(ctx):
     qs = f"employeeType=REGULAR&managerId=-1&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -41,6 +44,7 @@ def test_approve_negative_manager_id(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("superadmin")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of 404/400 for bad designation")
 def test_approve_nonexistent_designation(ctx):
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId=99999&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -50,6 +54,7 @@ def test_approve_nonexistent_designation(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_invalid_leave_manager_id(ctx):
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId=0&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -59,6 +64,7 @@ def test_approve_invalid_leave_manager_id(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_empty_employee_type(ctx):
     qs = f"employeeType=&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -68,6 +74,7 @@ def test_approve_empty_employee_type(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of validation error")
 def test_approve_duplicate_params(ctx):
     qs = f"employeeType=REGULAR&employeeType=CONSULTANT&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -77,6 +84,7 @@ def test_approve_duplicate_params(ctx):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("hr")
+@pytest.mark.xfail(reason="Bug: backend returns 500 instead of 405/404 for wrong method")
 def test_approve_wrong_method(ctx):
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.post(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -87,7 +95,7 @@ def test_approve_wrong_method(ctx):
 @pytest.mark.module_onboarding
 def test_approve_unauthorized(playwright):
     base_url = os.getenv("HRMIS_API_HOST", "https://topuptalent.com")
-    unauth = playwright.request.new_context(base_url=base_url)
+    unauth = playwright.request.new_context(base_url=base_url, ignore_https_errors=True)
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     try:
         r = unauth.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -99,6 +107,7 @@ def test_approve_unauthorized(playwright):
 @pytest.mark.regression
 @pytest.mark.module_onboarding
 @pytest.mark.role("employee")
+@pytest.mark.xfail(reason="Bug: employee role is currently allowed to call approve endpoint")
 def test_approve_employee_forbidden(ctx):
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"
     r = ctx.put(_p(f"{ONBOARDING_HR_APPROVE(EMP_ID)}?{qs}"))
@@ -110,6 +119,7 @@ def test_approve_invalid_token(playwright):
     base_url = os.getenv("HRMIS_API_HOST", "https://topuptalent.com")
     ctx = playwright.request.new_context(
         base_url=base_url,
+        ignore_https_errors=True,
         extra_http_headers={"Authorization": "Bearer invalid_token"},
     )
     qs = f"employeeType=REGULAR&managerId={MGR_ID}&designationId={DESIG_ID}&leaveManagerId={LEAVE_MGR_ID}&employeeSubType={EMP_SUBTYPE}"

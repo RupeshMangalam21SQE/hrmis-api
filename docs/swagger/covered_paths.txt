@@ -1,0 +1,13 @@
+/announcement
+/announcement/update
+/api/auth/signin
+/assest/assestRequestList
+/document/v1/list/status
+/menu/v1/users
+/onboarding
+/onboarding/departmentlist
+/onboarding/invitations
+/onboarding/paged
+/onboarding/v2/updateEmail
+/salary/salaryupload
+/user

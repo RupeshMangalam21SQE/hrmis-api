@@ -17,7 +17,7 @@ ENV/
 report*.html
 *.xml
 *.junit.xml
-
+reports/
 # Playwright artifacts
 playwright-report/
 test-results/
@@ -34,3 +34,6 @@ trace.zip
 *.code-workspace
 .DS_Store
 Thumbs.db
+
+#local data
+/tests/test_data/*

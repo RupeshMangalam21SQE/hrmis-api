@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Login Signin Success Response",
+  "type": "object",
+  "required": ["accessToken", "user", "message"],
+  "properties": {
+    "accessToken": {
+      "type": "string",
+      "minLength": 10
+    },
+    "user": {
+      "type": "object",
+      "required": ["id", "email", "name", "roles"],
+      "properties": {
+        "id": { "type": "integer" },
+        "email": { "type": "string", "minLength": 3 },
+        "name": { "type": "string", "minLength": 1 },
+        "roles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "gender": { "type": ["string", "null"] },
+        "location": { "type": ["string", "null"] },
+        "designation": { "type": ["string", "null"] },
+        "subType": { "type": ["string", "null"] },
+        "empType": { "type": ["string", "null"] },
+        "doj": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "message": { "type": "string" }
+  },
+  "additionalProperties": true
+}

@@ -12,6 +12,8 @@ def load_announcements_schemas():
 schemas = load_announcements_schemas()
 
 @pytest.mark.contract
+@pytest.mark.regression
+@pytest.mark.module_announcements
 def test_contract_list_announcements(ctx):
     client = AnnouncementsClient(ctx)
     response = client.get_announcements(page=1, page_size=10, status="PENDING")
@@ -19,6 +21,8 @@ def test_contract_list_announcements(ctx):
     validate(instance=response.json(), schema=schemas["announcement_list_response_schema"])
 
 @pytest.mark.contract
+@pytest.mark.regression
+@pytest.mark.module_announcements
 def test_contract_action_response(ctx, valid_announcement_data, sample_announcement_file):
     client = AnnouncementsClient(ctx)
     payload = {**valid_announcement_data, 'file': sample_announcement_file}

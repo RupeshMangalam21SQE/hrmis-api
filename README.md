@@ -150,6 +150,36 @@ pytest -m module_announcements
 
 # Dashboard
 pytest -m module_dashboard
+
+# Login (API regression)
+pytest -m module_login
+
+# Salary Management (API regression)
+pytest -m module_salary_management
+```
+
+### Excel Regression Modules
+Excel-driven API tests are generated from `tests/test_data/HRMIS_API-Test cases .xlsx` for stable suites only:
+
+- `tests/modules/login/test_login_stable_api_sheet.py` (sheet: Login)
+- `tests/modules/salary_management/test_salary_management_stable_api_sheet.py` (sheet: Salary Management)
+
+These cases are marked with:
+
+- `regression`
+- `api_regression`
+
+```bash
+# Collect stable API regression tests
+pytest tests/modules/login tests/modules/salary_management --collect-only -q
+
+# Execute only stable API regression modules
+pytest -m "api_regression and (module_login or module_salary_management)"
+
+# Use a custom workbook path
+# PowerShell
+$env:API_REGRESSION_XLSX_PATH="C:\path\to\HRMIS_API-Test cases .xlsx"
+pytest tests/modules/login tests/modules/salary_management --collect-only -q
 ```
 
 ---
@@ -207,6 +237,36 @@ pytest -vv
 
 # Show slow tests
 pytest --durations=10 --durations-min=1.0
+```
+
+### Built-in Reporting (Auto)
+Every pytest run now writes reports automatically to:
+
+- `reports/<timestamp>/junit.xml`
+- `reports/<timestamp>/report.html`
+- `reports/<timestamp>/summary.txt`
+- `reports/<timestamp>/xfail_defect_mapping.xlsx`
+
+A shareable copy of xfail defect mapping is also refreshed on each run at:
+
+- `tests/test_data/xfail_defect_mapping.xlsx`
+
+Use a custom folder when needed:
+
+```bash
+# Custom report folder
+pytest --report-dir reports/latest
+
+# Example with role + marker filter
+pytest --role hr -m module_onboarding --report-dir reports/onboarding_hr
+```
+
+You can also set a default folder through environment variable:
+
+```bash
+# PowerShell
+$env:REPORT_DIR="reports/latest"
+pytest
 ```
 
 ---
@@ -294,3 +354,53 @@ pytest --markers
 - Keep **positives** in `tests/modules`, **negatives** in `tests/negative`, **contracts** in `tests/contracts`.
 - Always **tag tests with the correct module marker** so a single `-m module_<name>` collects from all folders.
 - Prefer the `ctx` fixture in tests; use per-test `role(name)` only for explicit RBAC verification.
+
+---
+
+## Swagger Reference
+
+- A snapshot of backend Swagger/OpenAPI metadata is stored for team reference in `docs/swagger/`.
+- Key files:
+  - `docs/swagger/openapi.json` (full raw OpenAPI spec)
+  - `docs/swagger/swagger-config.json` (Swagger UI config)
+  - `docs/swagger/endpoints.csv` (flattened operation index)
+  - `docs/swagger/schemas.txt` (schema/model names)
+  - `docs/swagger/REFERENCE.md` (summary + refresh instructions)
+
+---
+
+## Defect Traceability
+
+- Salary known defects are mapped in code with explicit IDs (`SAL-DEF-001` ... `SAL-DEF-009`) and converted to `xfail` only when the observed status and error signature match.
+- `xfail_defect_mapping.xlsx` includes: test node, case ID, defect ID, expected outcome, actual outcome, and reason.
+- This Excel is intended for sharing with backend developers so expected vs actual behavior is reviewable in one place.
+
+---
+
+## Stable Coverage Dashboard
+
+- Stable coverage tracking artifacts are generated under `docs/coverage/`.
+- The dashboard maps manual test cases from the Excel catalog to automated/spec coverage using reviewed IDs from `docs/coverage/verified_case_mapping.json`.
+- Per-case file evidence can be maintained in `docs/coverage/verified_case_mapping.json` under each module `evidence` block.
+- The dashboard also shows module-level pass/fail counts from the latest `reports/*/junit.xml` run (xfail is counted under failed).
+- An Evidence Audit section highlights evidence completeness for mapped automated/spec cases per module.
+- Only modules with `go_signal: true` in `docs/coverage/stable_modules.json` contribute to the top summary coverage.
+
+Generate/refresh dashboard:
+
+```bash
+python scripts/generate_stable_coverage_dashboard.py
+```
+
+Strict mode (fails generation if a case is marked spec-covered without verified mapping):
+
+```bash
+python scripts/generate_stable_coverage_dashboard.py --strict-verified-spec
+```
+
+Primary outputs:
+
+- `docs/coverage/STABLE_COVERAGE_DASHBOARD.md`
+- `docs/coverage/STABLE_COVERAGE_DASHBOARD.html`
+- `docs/coverage/stable_coverage_dashboard.json`
+- `docs/coverage/case_traceability.csv` (includes evidence file columns)

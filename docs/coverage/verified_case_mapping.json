@@ -1,0 +1,359 @@
+{
+  "notes": "Manually verified case mappings to avoid false-positive auto mapping. Use only reviewed IDs. Evidence is recorded per mapped case ID.",
+  "module_case_mapping": {
+    "login": {
+      "automated_case_ids": [
+        "AUTH-PF-001",
+        "AUTH-PF-002",
+        "AUTH-PF-003",
+        "AUTH-PF-004",
+        "AUTH-PF-005",
+        "AUTH-PF-006",
+        "AUTH-PF-007",
+        "AUTH-PF-008",
+        "AUTH-PF-009",
+        "AUTH-PF-010"
+      ],
+      "spec_case_ids": [
+        "AUTH-PF-001"
+      ]
+    },
+    "salary_management": {
+      "automated_case_ids": [
+        "SAL-UP-001",
+        "SAL-UP-002",
+        "SAL-UP-003",
+        "SAL-UP-004",
+        "SAL-UP-005",
+        "SAL-UP-006",
+        "SAL-UP-007",
+        "SAL-UP-008",
+        "SAL-UP-009",
+        "SAL-UP-010",
+        "SAL-UP-011"
+      ],
+      "spec_case_ids": [
+        "SAL-UP-004"
+      ]
+    },
+    "announcements": {
+      "automated_case_ids": [
+        "ANN-001",
+        "ANN-002",
+        "ANN-003",
+        "ANN-004",
+        "ANN-005",
+        "ANN-006",
+        "ANN-007",
+        "ANN-008",
+        "ANN-009",
+        "ANN-010",
+        "ANN-011",
+        "ANN-012",
+        "ANN-013",
+        "ANN-014",
+        "ANN-015",
+        "ANN-016",
+        "ANN-017",
+        "ANN-018",
+        "ANN-019"
+      ],
+      "spec_case_ids": [
+        "ANN-001",
+        "ANN-009"
+      ],
+      "evidence": {
+        "automated": {
+          "ANN-001": {
+            "files": ["tests/modules/announcements/test_announcements_positives.py"],
+            "note": "Create positive flow"
+          },
+          "ANN-002": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Missing mandatory field"
+          },
+          "ANN-003": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Invalid date validation"
+          },
+          "ANN-004": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Invalid file type handling"
+          },
+          "ANN-005": {
+            "files": ["tests/modules/announcements/test_announcements_rbac.py"],
+            "note": "RBAC forbidden create"
+          },
+          "ANN-006": {
+            "files": ["tests/modules/announcements/test_announcements_positives.py"],
+            "note": "Update positive flow"
+          },
+          "ANN-007": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Update missing ID"
+          },
+          "ANN-008": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Update invalid ID"
+          },
+          "ANN-009": {
+            "files": ["tests/modules/announcements/test_announcements_positives.py"],
+            "note": "Fetch pending announcements"
+          },
+          "ANN-010": {
+            "files": ["tests/modules/announcements/test_announcements_edge_cases.py"],
+            "note": "List endpoint pagination coverage"
+          },
+          "ANN-011": {
+            "files": ["tests/modules/announcements/test_announcements_edge_cases.py"],
+            "note": "List endpoint empty result coverage"
+          },
+          "ANN-012": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Invalid query params"
+          },
+          "ANN-013": {
+            "files": ["tests/modules/announcements/test_announcements_edge_cases.py"],
+            "note": "Default pagination behavior"
+          },
+          "ANN-014": {
+            "files": ["tests/modules/announcements/test_announcements_delete.py"],
+            "note": "Delete valid ID"
+          },
+          "ANN-015": {
+            "files": ["tests/modules/announcements/test_announcements_delete.py"],
+            "note": "Delete invalid ID"
+          },
+          "ANN-016": {
+            "files": ["tests/modules/announcements/test_announcements_noauth.py"],
+            "note": "Delete without auth"
+          },
+          "ANN-017": {
+            "files": ["tests/modules/announcements/test_announcements_delete.py"],
+            "note": "Delete twice behavior"
+          },
+          "ANN-018": {
+            "files": ["tests/negative/test_announcements_negative.py"],
+            "note": "Malformed delete ID"
+          },
+          "ANN-019": {
+            "files": ["tests/modules/announcements/test_announcements_rbac.py"],
+            "note": "RBAC forbidden delete"
+          }
+        },
+        "spec": {
+          "ANN-001": {
+            "files": ["tests/contracts/test_announcements_contract.py"],
+            "note": "Contract action response schema"
+          },
+          "ANN-009": {
+            "files": ["tests/contracts/test_announcements_contract.py"],
+            "note": "Contract list response schema"
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "automated_case_ids": [
+        "TC_GET_01"
+      ],
+      "spec_case_ids": [
+        "TC_GET_01"
+      ],
+      "evidence": {
+        "automated": {
+          "TC_GET_01": {
+            "files": ["tests/contracts/test_dashboard_contract.py"],
+            "note": "Current coverage uses contract-level users menu call"
+          }
+        },
+        "spec": {
+          "TC_GET_01": {
+            "files": ["tests/contracts/test_dashboard_contract.py"],
+            "note": "Users menu schema contract"
+          }
+        }
+      }
+    },
+    "onboarding": {
+      "automated_case_ids": [
+        "TC_OB_01",
+        "TC_OB_02",
+        "TC_OB_03",
+        "TC_OB_04",
+        "TC_OB_05",
+        "TC_OB_07",
+        "TC_OB_08",
+        "TC_OB_09",
+        "TC_OB_10",
+        "TC_OB_11",
+        "TC_OB_12",
+        "TC_OB_13",
+        "TC_OB_14",
+        "TC_OB_15",
+        "TC_OB_16",
+        "TC_OB_18",
+        "TC_OB_19",
+        "TC_OB_20",
+        "TC_OB_21",
+        "TC_OB_24",
+        "TC_OB_25",
+        "TC_OB_26",
+        "TC_OB_27",
+        "TC_OB_28",
+        "TC_OB_29",
+        "TC_OB_30",
+        "TC_OB_31",
+        "TC_OB_32",
+        "TC_OB_33",
+        "TC_OB_34",
+        "TC_OB_35",
+        "TC_OB_36",
+        "TC_OB_37",
+        "TC_OB_38"
+      ],
+      "spec_case_ids": [],
+      "evidence": {
+        "automated": {
+          "TC_OB_01": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding invite create flow"
+          },
+          "TC_OB_02": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding invite create validations"
+          },
+          "TC_OB_03": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create role coverage"
+          },
+          "TC_OB_04": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create auth coverage"
+          },
+          "TC_OB_05": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create input validation"
+          },
+          "TC_OB_07": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create duplicate/invalid input"
+          },
+          "TC_OB_08": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create file validation"
+          },
+          "TC_OB_09": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create negative path"
+          },
+          "TC_OB_10": {
+            "files": ["tests/modules/onboarding/test_onboarding_create_roles.py", "tests/negative/test_onboarding_create_negative.py"],
+            "note": "Onboarding create authorization path"
+          },
+          "TC_OB_11": {
+            "files": ["tests/modules/onboarding/test_onboarding_update_email_roles.py", "tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Update email happy path"
+          },
+          "TC_OB_12": {
+            "files": ["tests/modules/onboarding/test_onboarding_update_email_roles.py", "tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Update email role coverage"
+          },
+          "TC_OB_13": {
+            "files": ["tests/modules/onboarding/test_onboarding_update_email_roles.py", "tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Update email forbidden/role checks"
+          },
+          "TC_OB_14": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Missing email parameter"
+          },
+          "TC_OB_15": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Missing employee ID parameter"
+          },
+          "TC_OB_16": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Invalid email format"
+          },
+          "TC_OB_18": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Unauthorized update email"
+          },
+          "TC_OB_19": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Invalid token update email"
+          },
+          "TC_OB_20": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Overlong email validation"
+          },
+          "TC_OB_21": {
+            "files": ["tests/negative/test_onboarding_update_email_negative.py"],
+            "note": "Unsupported special character validation"
+          },
+          "TC_OB_24": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve REGULAR flow"
+          },
+          "TC_OB_25": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve REGULAR role variation"
+          },
+          "TC_OB_26": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve CONSULTANT flow"
+          },
+          "TC_OB_27": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve CONSULTANT role variation"
+          },
+          "TC_OB_28": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve empty employeeType"
+          },
+          "TC_OB_29": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve invalid employeeType"
+          },
+          "TC_OB_30": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve negative manager ID"
+          },
+          "TC_OB_31": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve invalid designation ID"
+          },
+          "TC_OB_32": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve invalid leave manager ID"
+          },
+          "TC_OB_33": {
+            "files": ["tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve missing/duplicate query parameters"
+          },
+          "TC_OB_34": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve role consistency scenario"
+          },
+          "TC_OB_35": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve role consistency scenario"
+          },
+          "TC_OB_36": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve role consistency scenario"
+          },
+          "TC_OB_37": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve role consistency scenario"
+          },
+          "TC_OB_38": {
+            "files": ["tests/modules/onboarding/test_onboarding_approve_roles.py", "tests/negative/test_onboarding_approve_negative.py"],
+            "note": "Approve role consistency scenario"
+          }
+        },
+        "spec": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "notes": "Set go_signal=true only when dev team confirms module stability.",
+  "modules": [
+    {
+      "module_key": "login",
+      "sheet_name": "Login",
+      "test_glob": "tests/modules/login/test_*stable*_sheet.py",
+      "schema_dir": "src/schemas/login",
+      "go_signal": true
+    },
+    {
+      "module_key": "salary_management",
+      "sheet_name": "Salary Management",
+      "test_glob": "tests/modules/salary_management/test_*stable*_sheet.py",
+      "schema_dir": "src/schemas/salary",
+      "go_signal": true
+    },
+    {
+      "module_key": "announcements",
+      "sheet_name": "Annoucements",
+      "test_glob": "tests/modules/announcements/test_*.py",
+      "schema_dir": "src/schemas/announcements",
+      "go_signal": false
+    },
+    {
+      "module_key": "dashboard",
+      "sheet_name": "Dashboard",
+      "test_glob": "tests/modules/**/test_*dashboard*.py",
+      "schema_dir": "src/schemas/dashboard",
+      "go_signal": false
+    },
+    {
+      "module_key": "onboarding",
+      "sheet_name": "Employee Onboard",
+      "test_glob": "tests/modules/onboarding/test_*.py",
+      "schema_dir": "src/schemas/onboarding",
+      "go_signal": false
+    }
+  ]
+}

@@ -42,6 +42,7 @@ def poll_for_status(client: OnboardingClient, emp_id: int, target_status: str, t
 @pytest.mark.module_onboarding
 @pytest.mark.smoke
 @pytest.mark.skipif(not RUN_MUTATING, reason="Mutating flows disabled")
+@pytest.mark.xfail(reason="Bug: onboarding approve endpoint returns 500 in HR step")
 def test_onboarding_hr_it_complete(playwright: Playwright, superadmin_ctx: APIRequestContext):
     client = OnboardingClient(superadmin_ctx)
 

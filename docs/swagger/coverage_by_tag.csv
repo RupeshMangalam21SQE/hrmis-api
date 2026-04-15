@@ -1,0 +1,42 @@
+tag,total_operations,covered_operations,coverage_percent
+Project Management,50,0,0.0
+Leave Controller,40,0,0.0
+Asset Controller,25,1,4.0
+Employee Management,24,1,4.17
+event-controller,20,0,0.0
+master-access-controller,15,0,0.0
+timesheet-controller,14,0,0.0
+internal-controller,13,0,0.0
+Employee Document Management,12,1,8.33
+Onboarding Controller,12,6,50.0
+Performance Controller,12,0,0.0
+mdm-activity-controller,11,0,0.0
+Employee ReimbursementEntity Management,10,0,0.0
+leave-controller-v-2,10,0,0.0
+Announcement  Management,8,3,37.5
+Attendance Regularization requests,8,0,0.0
+Appraisal Controller,7,0,0.0
+Auth Controller,6,1,16.67
+dashboard-controller,6,0,0.0
+project-member-csat-controller,6,0,0.0
+Leave Credit Request  Management,5,0,0.0
+Menu Controller,5,1,20.0
+offboarding-controller,5,0,0.0
+role-controller,5,0,0.0
+Biometric Controller,4,0,0.0
+Holiday Controller,4,0,0.0
+consultant-controller,4,0,0.0
+Adhoc Email creations requests,3,0,0.0
+Employee Dependent Management,3,0,0.0
+Employee Education Management,3,0,0.0
+Employee Experience Management,3,0,0.0
+Forget Password,3,0,0.0
+Punch Details,3,0,0.0
+Salary Controller,3,1,33.33
+Upload and Manage the Form 16 of the Employee,3,0,0.0
+Asset Return Controller,2,0,0.0
+Department Controller,2,0,0.0
+Designation Controller,2,0,0.0
+Roles Mapping,2,0,0.0
+Employee Password Change,1,0,0.0
+backup-controller,1,0,0.0
