@@ -1,0 +1,151 @@
+# API Tests Writing Guide
+
+## Core principles
+
+- Keep protocol checks in clients and write tests to verify business outcomes and contracts, not HTTP plumbing.
+- Use pytest markers, fixtures, and parametrization to control selection, setup, and role matrices instead of duplicating tests.
+- Centralize endpoints under src/endpoints and reuse them from clients and tests to avoid drift.
+
+## File placement
+
+- Place positive and smoke tests by module in tests/modules/<module>/, contract tests in tests/contracts/, and negative tests in tests/negative/.
+- Keep common fixtures (ctx, identity, role) in conftest.py and avoid per-file token creation.
+
+## Naming and markers
+
+- Name test files and functions by feature and endpoint behavior
+
+(for example, test_assets_smoke_auth.py::test_asset_request_list).
+
+- Always tag tests with module_* and scenario markers (smoke, contract, negative, regression) for flexible selection.
+- Add @pytest.mark.role("<name>") only where a specific role is being asserted; rely on --role or DEFAULT_ROLE for broad runs.
+
+## Endpoint use
+
+- Import path constants from src/endpoints/<module>.py and join them with API_PREFIX via _p() or a client method to avoid string duplication.
+
+## Client-first pattern
+
+- Implement thin clients over APIRequestContext to centralize status assertions and common request options, improving reuse and readability.
+
+## Test skeleton: positive/smoke
+
+`python*# tests/modules/assets/test_assets_smoke_auth.py*
+import pytest
+from src.clients.assets_client import AssetsClient
+
+@pytest.mark.smoke
+@pytest.mark.regression
+@pytest.mark.module_assets
+def test_asset_request_list(ctx):
+    client = AssetsClient(ctx)
+    r = client.list_requests(page_size=10, page=1)
+    assert r.ok, r.text()
+    body = r.json()
+    assert isinstance(body, (list, dict)), f"Unexpected payload: {body}"`
+
+This pattern keeps status checks in the client and validates type/shape at the test level for quick health signals.
+
+## Test skeleton: contract
+
+`python*# tests/contracts/test_documents_contract.py*
+import os, json, pytest, jsonschema
+from src.clients.documents_client import DocumentsClient
+
+@pytest.mark.contract
+@pytest.mark.regression
+@pytest.mark.module_documents
+def test_documents_status_list_contract(ctx):
+    schema_path = os.path.join("src", "schemas", "documents", "status_list.schema.json")
+    schema = json.load(open(schema_path, "r", encoding="utf-8"))
+    client = DocumentsClient(ctx)
+    r = client.list_status()
+    assert r.ok, r.text()
+    jsonschema.validate(instance=r.json(), schema=schema)`
+
+Contract tests verify envelope and fields for breaking changes and run quickly in CI gates.
+
+## Test skeleton: negative/RBAC-visibility
+
+`python*# tests/negative/test_assets_visibility.py*
+import pytest, os
+from src.endpoints.assets import ASSET_REQUESTS
+
+def _p(path: str) -> str:
+    prefix = os.getenv("API_PREFIX", "HRMBackendTest").strip("/")
+    return f"/{prefix}/{path.lstrip('/')}"
+
+@pytest.mark.negative
+@pytest.mark.regression
+@pytest.mark.module_assets
+@pytest.mark.role("employee")
+def test_assets_request_list_scoped_to_employee(ctx, identity_employee):
+    r = ctx.get(_p(f"{ASSET_REQUESTS}?pageSize=10&page=1"))
+    assert r.ok, r.text()
+    body = r.json()
+    items = body["data"] if isinstance(body, dict) and "data" in body else body
+    assert isinstance(items, list), f"Unexpected payload: {body}"
+    exp_code = identity_employee.get("employeeCode")
+    exp_id = identity_employee.get("employeeId")
+    def owned(item):
+        item_id = item.get("employeeId")
+        item_code = item.get("employeeCode") or item.get("empCode")
+        checks = []
+        if exp_id is not None:
+            checks.append(item_id == exp_id)
+        if exp_code:
+            checks.append(item_code == exp_code)
+        return any(checks) if checks else True
+    assert all(owned(it) for it in items)`
+
+Negative tests should assert denial or strict scoping per role, isolated from positive flows.
+
+## Parametrizing roles (optional)
+
+`python*# Parametrize role to reuse the same test for multiple roles*
+import pytest
+
+@pytest.mark.module_documents
+@pytest.mark.parametrize("role", ["superadmin", "hr"])
+def test_documents_status_list_roles(ctx, role, request):
+    request.node.add_marker(pytest.mark.role(role))
+    *# call client/test logic as usual*`
+
+Parametrization helps run the same shape test under multiple roles without duplication.
+
+## Fixtures and scopes
+
+- Prefer session-scoped APIRequestContext fixtures for role tokens and function-scoped ctx for per-test state when needed.
+- Use identity fixtures to resolve dynamic ids or codes to avoid hard-coding role-specific data.
+- Avoid relying on implicit fixture execution order; use explicit dependencies and scopes.
+
+## Skips and expected failures
+
+- Use skip/skipif for environment-driven empties and xfail for known backend quirks to keep CI green but informative.
+- Example: skip 204/404 for empty modules in smoke, xfail for a known intermittent 500 with documented reason.
+
+## Markers registration
+
+- Register all custom markers in pytest.ini to avoid warnings and enable --strict-markers safety.
+- Example:
+    - markers = module_assets, module_documents, module_onboarding, smoke, contract, negative, regression, role(name).
+
+## Reporting
+
+- Human-readable HTML:
+    - pytest --html=report.html --self-contained-html for quick sharing.
+- Machine-readable CI:
+    - pytest --junitxml=reports/junit.xml for CI dashboards and flaky detection.
+- Interactive dashboards:
+    - pytest --alluredir=allure-results; allure generate ... for rich drill-down reports.
+
+## Performance and control
+
+- Parallelize with pytest-xdist (-n auto) for large modules, and use --last-failed/--ff for quick cycles locally.
+- Keep timeouts in APIRequestContext and signin configurable via environment to stabilize auth and slow endpoints.
+
+## Do and don’t
+
+- Do import endpoints from src/endpoints and use clients for I/O calls; don’t hardcode paths in tests.
+- Do focus tests on domain assertions and contracts; don’t duplicate status checks per test.
+- Do tag and parametrize for roles and scenarios; don’t copy tests for each role.

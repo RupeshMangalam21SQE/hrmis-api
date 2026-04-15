@@ -35,5 +35,3 @@ trace.zip
 .DS_Store
 Thumbs.db
 
-#local data
-/tests/test_data/*
